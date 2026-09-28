@@ -343,10 +343,10 @@ html.noanim .reveal, html.noanim .btn-primary { transition: none !important; ani
   color: var(--accent); box-shadow: 0 0 0 8px rgba(242, 153, 74, .06);
 }
 
-/* ---------- Lightbox (zoom фото программы) ---------- */
+/* ---------- Lightbox (zoom фото) ---------- */
+img[data-lightbox] { cursor: zoom-in; transition: transform .25s ease, filter .25s ease; }
+img[data-lightbox]:hover { transform: scale(1.015); filter: brightness(1.06); }
 .mindmap-frame.zoomable { position: relative; }
-.mindmap-frame.zoomable img[data-lightbox] { cursor: zoom-in; transition: transform .25s ease; }
-.mindmap-frame.zoomable:hover img[data-lightbox] { transform: scale(1.015); }
 .mindmap-frame.zoomable::after {
   content: "нажмите, чтобы рассмотреть";
   position: absolute; right: 14px; bottom: 14px;
