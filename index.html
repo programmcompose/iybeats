@@ -84,6 +84,25 @@
   </div>
 </div>
 
+<!-- ================= ВИДЕО (после первого блока) ================= -->
+<section class="video-section" id="video">
+  <div class="container">
+    <!-- TODO: вставить embed-ссылку видео в data-video, например:
+         YouTube:   https://www.youtube.com/embed/VIDEO_ID
+         VK:        https://vk.com/video_ext.php?oid=...&id=...
+         Kinescope: https://kinescope.io/embed/CODE -->
+    <div class="video-frame reveal" data-video="">
+      <iframe class="video-embed" title="Видео о курсе" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+      <div class="video-placeholder">
+        <span class="vp-play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+        <span class="vp-text">Здесь будет видео</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= КОМУ ПОДОЙДЁТ ================= -->
 <section class="section" id="forwho">
   <div class="container">
@@ -165,8 +184,8 @@
           <b>Что понадобится:</b> компьютер (Mac или Windows), наушники, колонки (бытовые или мониторные). VST плагины и паки звуков — предоставляем в курсе, покупать отдельно не нужно.
         </div>
       </div>
-      <div class="mindmap-frame reveal">
-        <img src="/assets/what-will-be-covered.png" alt="Что будет на курсе — карта модулей">
+      <div class="mindmap-frame zoomable reveal">
+        <img src="/assets/what-will-be-covered.png" alt="Что будет на курсе — карта модулей" data-lightbox>
       </div>
     </div>
   </div>

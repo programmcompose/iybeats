@@ -317,6 +317,86 @@ html.noanim .reveal, html.noanim .btn-primary { transition: none !important; ani
 .legal-doc p { color: #c9c9c9; font-size: .95rem; line-height: 1.75; margin-bottom: 1rem; }
 .legal-doc ul { margin: 0 0 1.2rem 1.3em; color: #c9c9c9; font-size: .95rem; line-height: 1.7; }
 
+/* ---------- Video section (после первого блока) ---------- */
+.video-section { padding: 40px 0 8px; }
+.video-frame {
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); background: #0d0d0d;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+}
+.video-embed { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: none; }
+.video-frame.loaded .video-embed { display: block; }
+.video-frame.loaded .video-placeholder { display: none; }
+.video-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(242, 153, 74, .08), transparent 60%),
+    linear-gradient(160deg, #141414, #0c0c0c);
+  color: var(--text-secondary); font-size: .95rem;
+}
+.vp-play {
+  width: 72px; height: 72px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(242, 153, 74, .12); border: 1px solid rgba(242, 153, 74, .4);
+  color: var(--accent); box-shadow: 0 0 0 8px rgba(242, 153, 74, .06);
+}
+
+/* ---------- Lightbox (zoom фото программы) ---------- */
+.mindmap-frame.zoomable { position: relative; }
+.mindmap-frame.zoomable img[data-lightbox] { cursor: zoom-in; transition: transform .25s ease; }
+.mindmap-frame.zoomable:hover img[data-lightbox] { transform: scale(1.015); }
+.mindmap-frame.zoomable::after {
+  content: "нажмите, чтобы рассмотреть";
+  position: absolute; right: 14px; bottom: 14px;
+  padding: 7px 12px; border-radius: 999px;
+  background: rgba(10, 10, 10, .8); border: 1px solid var(--border);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  color: var(--text-secondary); font-size: .78rem; letter-spacing: .02em;
+  opacity: 0; transform: translateY(4px); transition: opacity .25s ease, transform .25s ease;
+  pointer-events: none;
+}
+.mindmap-frame.zoomable:hover::after,
+.mindmap-frame.zoomable:focus-within::after { opacity: 1; transform: translateY(0); }
+@media (hover: none) {
+  .mindmap-frame.zoomable::after { opacity: .85; transform: none; }
+}
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  display: none; align-items: center; justify-content: center;
+  background: rgba(5, 5, 5, .93);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.lightbox.open { display: flex; }
+.lb-viewport {
+  position: relative; width: 100%; height: 100%;
+  overflow: hidden; touch-action: none; cursor: grab;
+}
+.lb-viewport.grabbing { cursor: grabbing; }
+.lb-img {
+  position: absolute; top: 0; left: 0;
+  max-width: none; width: auto; height: auto;
+  transform-origin: 0 0; will-change: transform;
+  user-select: none; -webkit-user-drag: none;
+}
+.lb-close {
+  position: absolute; top: 16px; right: 16px; z-index: 2;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(20, 20, 20, .8); border: 1px solid var(--border);
+  color: var(--text-primary); font-size: 1.1rem; line-height: 1; cursor: pointer;
+  transition: border-color .2s ease, background .2s ease;
+}
+.lb-close:hover { border-color: var(--accent); background: rgba(30, 30, 30, .9); }
+.lb-hint {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  color: #777; font-size: .8rem; white-space: nowrap;
+  pointer-events: none; z-index: 2;
+}
+@media (max-width: 720px) { .lb-hint { display: none; } }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
