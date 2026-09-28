@@ -1,2 +1,0 @@
-mkdocs-material>=9.5.0
-markdown>=3.5
