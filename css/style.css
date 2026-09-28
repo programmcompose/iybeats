@@ -34,6 +34,8 @@ body {
 }
 
 img { max-width: 100%; display: block; }
+/* Крупный заголовок hero переносим только по пробелам (размер подобран так, что слова влезают) */
+.hero h1 { overflow-wrap: normal; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-hover); }
 
@@ -113,8 +115,8 @@ a:hover { color: var(--accent-hover); }
     radial-gradient(ellipse 55% 45% at 12% 85%, rgba(242, 153, 74, .05), transparent 60%);
 }
 .hero-inner {
-  position: relative; max-width: none;
-  display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center;
+  position: relative; max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: 36px; align-items: center;
 }
 .hero-text { min-width: 0; }
 
@@ -162,8 +164,8 @@ html.noanim .float-chip { animation: none !important; }
 .eyebrow::before { content: ""; width: 34px; height: 2px; background: var(--accent); border-radius: 2px; }
 
 .hero h1 {
-  font-size: clamp(2.3rem, 4.8vw, 3.7rem);
-  line-height: 1.12; font-weight: 800; letter-spacing: -.02em;
+  font-size: clamp(2.3rem, 4.2vw, 3.2rem);
+  line-height: 1.14; font-weight: 800; letter-spacing: -.02em;
 }
 .hero h1 .highlight { color: var(--accent); }
 
