@@ -1,0 +1,53 @@
+# IY BEATS — лендинг 18 Потока (iybeats.com)
+site_name: "IY BEATS"
+site_description: "18 Поток по Созданию Музыки от IY BEATS — курс с нуля до релиза"
+site_url: "https://iybeats.com/"
+
+repo_name: programmcompose/iybeats
+repo_url: https://github.com/programmcompose/iybeats
+edit_uri: ""
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: ru
+  custom_dir: overrides
+  # TODO: добавить логотип и фавиконку (бренд-ассеты)
+  # logo: assets/landing/logo.png
+  # favicon: assets/landing/favicon.png
+  font:
+    text: Inter
+    code: JetBrains Mono
+  # Лендинг — только тёмная схема (как potoksite dark)
+  palette:
+    - scheme: slate
+      primary: custom
+      accent: custom
+  features:
+    - navigation.sections
+    - content.code.copy
+
+plugins:
+  - search:
+      lang: ru
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: false
+
+nav:
+  - Главная: index.md
+  - Оферта: oferta.md
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra_javascript:
+  - https://unpkg.com/lucide@latest
+  - assets/javascripts/lucide-init.js
