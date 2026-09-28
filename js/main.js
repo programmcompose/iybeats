@@ -84,10 +84,25 @@
   if (y) y.textContent = new Date().getFullYear();
 
   // ---------- Видео: ленивая загрузка embed при появлении на экране ----------
+  // На мобильных VK не даёт встраивать видео в iframe (страница отдаётся без фрейм-разрешения),
+  // поэтому показываем кнопку, открывающую видео во вкладке/приложении.
+  var isMobile = /Android|iPhone|iPod|iPad/i.test(navigator.userAgent) ||
+    (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
   var videoFrames = document.querySelectorAll('.video-frame[data-video]');
   videoFrames.forEach(function (frame) {
     var src = frame.getAttribute('data-video').trim();
     if (!src) return; // пусто — показываем плейсхолдер
+    if (isMobile) {
+      var mobileUrl = frame.getAttribute('data-mobile-url') || 'https://vkvideo.ru/';
+      var ph = frame.querySelector('.video-placeholder');
+      if (ph) {
+        ph.classList.add('vp-link');
+        var txt = ph.querySelector('.vp-text');
+        if (txt) txt.textContent = 'Смотреть видео на VK';
+        frame.addEventListener('click', function () { window.open(mobileUrl, '_blank', 'noopener'); });
+      }
+      return;
+    }
     var iframe = frame.querySelector('.video-embed');
     function load() {
       iframe.src = src;

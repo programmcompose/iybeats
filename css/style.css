@@ -381,6 +381,8 @@ html.noanim .reveal, html.noanim .btn-primary { transition: none !important; ani
     linear-gradient(160deg, #141414, #0c0c0c);
   color: var(--text-secondary); font-size: .95rem;
 }
+.video-frame .vp-link { cursor: pointer; }
+.video-frame .vp-link:hover .vp-play { background: rgba(242, 153, 74, .2); box-shadow: 0 0 0 12px rgba(242, 153, 74, .08); }
 .vp-play {
   width: 72px; height: 72px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
