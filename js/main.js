@@ -281,4 +281,32 @@
       });
     });
   }
+
+  // ---------- Таймер до открытия набора (15 декабря 2026, локальное время) ----------
+  (function () {
+    var cd = document.getElementById('countdown');
+    if (!cd) return;
+    var dEl = document.getElementById('cd-d'),
+        hEl = document.getElementById('cd-h'),
+        mEl = document.getElementById('cd-m'),
+        sEl = document.getElementById('cd-s');
+    if (!dEl || !hEl || !mEl || !sEl) return;
+    var target = new Date(2026, 11, 15, 0, 0, 0).getTime(); // 15.12.2026 00:00
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    var timer = null;
+    function tick() {
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        cd.innerHTML = '<span class="cd-open">Набор открыт!</span>';
+        if (timer) clearInterval(timer);
+        return;
+      }
+      dEl.textContent = String(Math.floor(diff / 86400000));
+      hEl.textContent = pad(Math.floor(diff / 3600000) % 24);
+      mEl.textContent = pad(Math.floor(diff / 60000) % 60);
+      sEl.textContent = pad(Math.floor(diff / 1000) % 60);
+    }
+    tick();
+    timer = setInterval(tick, 1000);
+  })();
 })();
