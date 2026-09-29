@@ -306,9 +306,23 @@ html.noanim .float-chip { animation: none !important; }
 .mindmap-frame img { width: 100%; }
 
 /* ---------- Stages (этапы) ---------- */
+/* Фоновая текстура «Этапы курса»: фото студии (блюр и затемнение вшиты в ассет,
+   зеркальный тайл — швы не видны), затухание к краям секции */
+#stages { position: relative; overflow: hidden; }
+.stage-bg {
+  position: absolute; inset: -48px; z-index: 0; pointer-events: none;
+  background: url('../assets/studio-bg.jpg') top left / auto repeat;
+  filter: blur(6px);
+}
+.stage-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(19, 19, 19, .34) 12%, rgba(19, 19, 19, .34) 88%, var(--bg-surface) 100%);
+}
+#stages .container { position: relative; z-index: 1; }
 .stage-card {
   display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center;
-  background: var(--bg-elevated); border: 1px solid var(--border);
+  background: rgba(25, 25, 25, .8); border: 1px solid var(--border);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   border-radius: calc(var(--radius) + 4px); padding: 36px; margin-bottom: 22px;
 }
 .stage-card:nth-child(even) .stage-media { order: 2; }
