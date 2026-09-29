@@ -119,8 +119,18 @@ a:hover { color: var(--accent-hover); }
     radial-gradient(ellipse 70% 55% at 75% 12%, rgba(242, 153, 74, .13), transparent 62%),
     radial-gradient(ellipse 55% 45% at 12% 85%, rgba(242, 153, 74, .05), transparent 60%);
 }
+/* Фоновая текстура hero: скриншот FL Studio с блюром и затемнением */
+.hero-bg {
+  position: absolute; inset: -48px; z-index: 0; pointer-events: none;
+  background: url('../assets/hero-bg.jpg') center / cover no-repeat;
+  filter: blur(26px) brightness(.45) saturate(.8);
+}
+.hero-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 10, .5) 0%, rgba(10, 10, 10, .26) 38%, rgba(10, 10, 10, .6) 78%, var(--bg-base) 100%);
+}
 .hero-inner {
-  position: relative; max-width: 1000px; margin: 0 auto;
+  position: relative; z-index: 1; max-width: 1000px; margin: 0 auto;
   display: grid; grid-template-columns: 1.05fr .95fr; gap: 36px; align-items: center;
 }
 .hero-text { min-width: 0; }
